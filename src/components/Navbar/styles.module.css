@@ -1,0 +1,288 @@
+#navbar {
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 111;
+    width: 100%;
+    top: 28px;
+}
+
+.navBox {
+    margin: 0 auto;
+    padding: 14px 10px;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 100px;
+    border: 1px solid var(--color-white);
+
+    gap: auto;
+    width: calc(100% - 60px);
+    margin: 0 30px;
+}
+
+.navLogo {
+    width: 161px;
+    height: 44px;
+}
+
+.navMenu {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    gap: 24px;
+    top: 100%;
+    left: -100vw;
+    padding: 24px;
+    background-color: var(--color-white);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.navMenu li {
+    list-style: none;
+}
+
+.navMenu li a {
+    text-decoration: none;
+    color: var(--color-black);
+}
+
+.btnCta {
+    display: none;
+}
+
+.navMenu.active {
+    opacity: 1;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+}
+
+.hamburger {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger img {
+    width: 30px;
+    height: 30px;
+    filter: invert(1);
+}
+
+
+/* Menu Link Hover Effect */
+
+
+.navMenu a {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-align: center;
+    padding: 0;
+    color: inherit;
+    text-decoration: none;
+    flex-grow: 1;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+
+.navMenu a span {
+    display: block;
+    transition: transform 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navMenu a:after {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    content: attr(data-hover);
+    display: inline;
+    text-align: center;
+    transition: top 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navMenu a:hover span {
+    transform: translateY(-100%);
+}
+
+.navMenu a:hover:after {
+    top: 0;
+}
+
+.navMenu a:active {
+    animation-name: rubberBand;
+}
+
+@keyframes rubberBand {
+    0% {
+        transform: scale(1);
+    }
+
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (min-width: 62em) {
+    .navBox {
+        gap: 60px;
+        padding: 14px 24px;
+    }
+
+    .navMenu {
+        flex-direction: row;
+        position: inherit;
+        align-items: center;
+        gap: 24px;
+        padding: 0;
+        background-color: transparent;
+        opacity: 1;
+    }
+
+    .navMenu li a {
+        font-size: var(--fs-p);
+        color: var(--color-white);
+    }
+
+    .btnCta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 16px;
+        background-color: #F5F5F5;
+        color: var(--color-black);
+        border: none;
+
+        cursor: pointer;
+
+        transition: all .2s ease-in-out;
+    }
+
+    .btnCta a {
+        color: var(--color-black);
+        width: max-content;
+        font-size: var(--fs-p2);
+    }
+
+    .btnCta img {
+        width: 24px;
+        height: 24px;
+        transform: rotate(-49deg);
+    }
+
+    .btnCta:hover {
+        background-color: var(--color-grey);
+    }
+
+    .btnCta:hover a {
+        color: var(--color-white);
+    }
+
+    .btnCta:hover img {
+        filter: invert(1);
+    }
+
+
+
+    .hamburger {
+        display: none;
+    }
+}
+
+
+@media (min-width: 70em) {
+    .navBox {
+        gap: auto;
+        width: calc(100% - 60px);
+        margin: 0 30px;
+    }
+
+    .navMenu {
+        width: max-content;
+    }
+}
+
+
+
+/* =========================================
+   DARK THEME OVERRIDES
+   ========================================= */
+
+.darkTheme .navBox {
+    border-color: var(--color-black);
+}
+
+/* Reverses the invert from light mode so the hamburger icon stays black */
+.darkTheme .hamburger img {
+    filter: none;
+}
+
+/* Optional: If your original logo image is white, this CSS trick will turn it black */
+.darkTheme .navLogo img {
+    filter: invert(1);
+}
+
+@media (min-width: 62em) {
+
+    /* Desktop nav links color */
+    .darkTheme .navMenu li a {
+        color: var(--color-black);
+    }
+
+    /* Invert CTA Button colors for dark theme */
+    .darkTheme .btnCta {
+        background-color: var(--color-grey);
+    }
+
+    .darkTheme .btnCta a {
+        color: var(--color-white);
+    }
+
+    /* Reverses arrow color to white */
+    .darkTheme .btnCta img {
+        filter: invert(1);
+    }
+
+    .darkTheme .btnCta:hover {
+        background-color: var(--color-black);
+    }
+
+    .darkTheme .btnCta:hover a {
+        color: var(--color-white);
+    }
+
+    /* Keeps arrow white on hover instead of turning black */
+    .darkTheme .btnCta:hover img {
+        filter: invert(1);
+    }
+}

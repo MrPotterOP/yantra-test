@@ -1,0 +1,129 @@
+.workSection {
+    width: 100%;
+    padding: 3rem 1.5rem;
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.workContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.workHeading {
+    font-size: var(--fs-h2);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 0 0 4rem 0;
+}
+
+/* --- Mobile-First Layout: Vertical Column --- */
+.stepsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    /* This gap is used in the line calculation below */
+}
+
+.stepItem {
+    display: flex;
+    flex-direction: row;
+    /* Places number on left, data on right */
+    gap: 1.5rem;
+    position: relative;
+    /* Crucial anchor for the absolute line */
+}
+
+.stepVisuals {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.stepBox {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-regular);
+    background-color: var(--color-white);
+    z-index: 2;
+}
+
+.stepContent {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
+    /* Visually aligns the text perfectly with the box */
+}
+
+.stepTitle {
+    font-size: var(--fs-p2);
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+}
+
+.stepText {
+    font-size: var(--fs-p2);
+    color: var(--color-black);
+    line-height: 1.2;
+    margin: 0;
+}
+
+/* Vertical Line for Mobile */
+.connectorLine {
+    position: absolute;
+    top: 80px;
+    /* Starts exactly at the bottom of the 80px box */
+    left: 39px;
+    /* Centered visually inside the 80px column */
+    width: 1px;
+    /* Formula: 100% of row height - box height + grid gap */
+    height: calc(100% - 80px + 3rem);
+    background-color: var(--color-grey);
+    z-index: 1;
+}
+
+/* --- Desktop Layout: Horizontal Row --- */
+@media (min-width: 62em) {
+    .workSection {
+        padding: 3rem 2rem;
+    }
+
+    .workHeading {
+        margin-bottom: 6rem;
+    }
+
+    .stepsGrid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        /* Desktop gap */
+    }
+
+    .stepItem {
+        flex-direction: column;
+        /* Reverts to stacked structure */
+        gap: 1.5rem;
+    }
+
+    .stepContent {
+        padding-top: 0;
+    }
+
+    /* Horizontal Line for Desktop */
+    .connectorLine {
+        top: 39px;
+        /* Center vertically behind the 80px box */
+        left: 80px;
+        /* Start precisely after the box */
+        /* Formula: 100% of column width - box width + grid gap */
+        width: calc(100% - 80px + 2rem);
+        height: 1px;
+    }
+}

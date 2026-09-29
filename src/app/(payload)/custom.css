@@ -1,0 +1,212 @@
+/**
+ * Yantra CMS — Payload Admin UI Theme  
+ * "Sunlight through glass" — amber accent on Payload's native dark/light system
+ *
+ * ─────────────────────────────────────────────────────────────────────────────
+ * HOW PAYLOAD THEMING ACTUALLY WORKS (v3):
+ *
+ * - --color-base-* is the NEUTRAL grey scale (white to black). DO NOT replace
+ *   it with a color — it drives ALL backgrounds, borders, and text.
+ * - In dark mode, --theme-elevation-0 = --color-base-900 (near-black bg)
+ *   and --theme-elevation-800 = --color-base-100 (light text/button bg)
+ * - The "primary" button uses --theme-elevation-800 as its background.
+ *   Since grey-100 is the button color in dark mode, it looks grey by default.
+ * - To get amber buttons: override --theme-elevation-800 and related vars
+ *   INSIDE html[data-theme=dark] to be amber values directly.
+ *
+ * Strategy here:
+ * 1. Keep --color-base-* UNTOUCHED (neutral greys)
+ * 2. Override ONLY the amber accent layer via direct color values
+ * 3. Fix dashboard card font sizes
+ * 4. Apply Inter font
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+/* ─── Google Fonts — Inter ────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ─── Font override ───────────────────────────────────────────────────────── */
+:root {
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'SF Mono', Menlo, Consolas, 'Courier New', monospace;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── DARK THEME — Amber primary button ───────────────────────────────────── */
+/*
+ * Primary button in dark mode uses --theme-elevation-800 as bg.
+ * In dark mode: --theme-elevation-800 = --color-base-100 (light grey).
+ * We override it to amber so the Save/Publish buttons are amber.
+ */
+html[data-theme=dark] .btn--style-primary {
+  --bg-color: #f59e0b !important;
+  --hover-bg: #d97706 !important;
+  --color: #1a0500 !important;
+  --hover-color: #1a0500 !important;
+}
+
+/* ─── LIGHT THEME — Amber primary button ──────────────────────────────────── */
+html[data-theme=light] .btn--style-primary {
+  --bg-color: #f59e0b !important;
+  --hover-bg: #d97706 !important;
+  --color: #1a0500 !important;
+  --hover-color: #1a0500 !important;
+}
+
+/* ─── Active nav indicator ────────────────────────────────────────────────── */
+/* The active nav link uses a left border or text color change */
+.nav__link.active,
+.nav__link--active,
+[class*='nav__link'][aria-current='page'] {
+  color: #f59e0b !important;
+}
+
+[class*='nav__link'].active::before,
+[class*='nav__link--active']::before {
+  background-color: #f59e0b !important;
+}
+
+/* ─── Focus rings — amber ──────────────────────────────────────────────────── */
+*:focus-visible {
+  outline-color: rgba(245, 158, 11, 0.6) !important;
+}
+
+/* ─── Checkbox checked — amber ────────────────────────────────────────────── */
+html[data-theme=dark] .checkbox-input__input:checked {
+  background-color: #f59e0b !important;
+  border-color: #f59e0b !important;
+}
+
+/* ─── Fix dashboard collection cards — oversized heading ─────────────────── */
+/*
+ * The dashboard shows "Collections" / "Content" as very large headings.
+ * This is Payload's default CollectionsWidget rendering. We scale it down.
+ */
+.dashboard__wrap h2,
+.dashboard__content h2,
+[class*='dashboard'] h2 {
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+  color: var(--theme-elevation-500) !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.dashboard__wrap h3,
+[class*='dashboard'] h3 {
+  font-size: 0.6875rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  color: var(--theme-elevation-500) !important;
+}
+
+/* Collection cards in dashboard */
+[class*='collection-card'] h3,
+[class*='collection-card'] h2,
+[class*='collectionCard'] h3,
+[class*='collectionCard'] h2 {
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  color: var(--theme-elevation-800) !important;
+}
+
+/* ─── Fix doc header title size ────────────────────────────────────────────── */
+/*
+ * Payload renders the document title in large text at the top of edit views.
+ * We tighten it to something more usable for an edit form.
+ */
+.doc-header__title,
+[class*='doc-header__title'] {
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ─── Breadcrumb — smaller, less prominent ────────────────────────────────── */
+[class*='step-nav'] {
+  font-size: 0.75rem !important;
+}
+
+/* ─── Field labels — semibold for clarity ─────────────────────────────────── */
+.field-label,
+[class*='field-label'] label,
+label[class*='field-label'] {
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.01em !important;
+}
+
+/* ─── Field descriptions — lighter, smaller ──────────────────────────────── */
+.field-description,
+[class*='field-description'] {
+  font-size: 0.6875rem !important;
+  line-height: 1.5 !important;
+  opacity: 0.65 !important;
+}
+
+/* ─── Collection list — row hover ─────────────────────────────────────────── */
+.table tr:hover > td {
+  background: var(--theme-elevation-50) !important;
+}
+
+/* ─── Upload thumbnail — show image ──────────────────────────────────────── */
+[class*='file-details__thumbnail'] img,
+[class*='thumbnail'] img {
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* ─── Secondary button — amber border ────────────────────────────────────── */
+html[data-theme=dark] .btn--style-secondary {
+  --btn-border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  --hover-btn-border: 1px solid rgba(245, 158, 11, 0.6) !important;
+}
+
+/* ─── Select input — highlight option ────────────────────────────────────── */
+[class*='rs__option--is-selected'],
+[class*='rs__option--is-focused'] {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+}
+
+[class*='rs__option--is-selected'] {
+  color: #f59e0b !important;
+}
+
+/* ─── Nav group labels — COLLECTIONS, CONTENT, etc. ─────────────────────── */
+[class*='nav__group-label'],
+.nav__group-label {
+  font-size: 0.6rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  opacity: 0.4 !important;
+}
+
+/* ─── Nav links — better sizing ──────────────────────────────────────────── */
+[class*='nav__link'],
+.nav__link {
+  font-size: 0.8125rem !important;
+  font-weight: 400 !important;
+}
+
+/* ─── Popup/Dropdown menus ───────────────────────────────────────────────── */
+[class*='popup__content'] {
+  border-radius: 6px !important;
+}
+
+/* ─── Sidebar logo area — add amber accent line ──────────────────────────── */
+[class*='nav__header'],
+.nav__header {
+  border-bottom: 2px solid rgba(245, 158, 11, 0.2) !important;
+  padding-bottom: 12px !important;
+  margin-bottom: 4px !important;
+}

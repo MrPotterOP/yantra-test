@@ -1,0 +1,93 @@
+.cultureSection {
+    position: relative;
+    width: 100%;
+    padding: 4rem 1.5rem;
+    overflow: hidden;
+    color: var(--color-white);
+}
+
+.cultureBgImage {
+    object-fit: cover;
+    z-index: 0;
+    filter: brightness(var(--opacity));
+}
+
+.cultureContainer {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cultureHeading {
+    font-size: var(--fs-h2);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.02em;
+    margin: 0 0 3rem 0;
+    text-transform: uppercase;
+}
+
+.cultureGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.cultureCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cultureCardTitle {
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.02em;
+    margin: 0;
+}
+
+.cultureCardText {
+    font-size: var(--fs-p1);
+    color: var(--color-dimWhite);
+    font-weight: var(--font-weight-light);
+    max-width: 90%;
+    margin-top: auto;
+    padding-top: 1.5rem;
+}
+
+/* --- Tablet / Desktop Layout --- */
+@media (min-width: 62em) {
+    .cultureSection {
+        padding: 6rem 2rem;
+    }
+
+    .cultureHeading {
+        margin-bottom: 5rem;
+    }
+
+    .cultureGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        align-items: stretch;
+    }
+
+    .cultureCard {
+        padding-right: 2rem;
+    }
+
+    .cultureCard:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background-color: var(--color-white);
+        opacity: 0.3;
+    }
+}

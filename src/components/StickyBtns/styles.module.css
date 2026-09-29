@@ -1,0 +1,75 @@
+.stickyBtns {
+    position: fixed;
+    right: 0;
+    top: 7%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 0;
+    z-index: 999;
+    transform: rotate(-90deg);
+    transform-origin: right bottom;
+}
+
+.stickyBtns a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 14px;
+
+    border: 1px solid var(--color-black);
+
+    background-color: var(--color-black);
+    color: var(--color-white);
+
+    transition: all .2s ease-in-out;
+}
+
+.stickyBtns a:hover {
+    background-color: var(--color-grey);
+    color: var(--color-white);
+}
+
+
+
+.stickyBtns a img {
+    width: 20px;
+    height: 20px;
+}
+
+.stickyBtns a:first-child {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.stickyBtns a:first-child:hover {
+    background-color: var(--color-grey);
+    color: var(--color-white);
+}
+
+.stickyBtns a:first-child:hover img {
+    filter: invert(1);
+}
+
+.stickyBtns a:first-child img {
+    rotate: -45deg;
+}
+
+
+@media (min-width: 62em) {
+    .stickyBtns a {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 12px 18px;
+    
+        border: 1px solid var(--color-black);
+    
+        background-color: var(--color-black);
+        color: var(--color-white);
+    }
+
+    .stickyBtns a img {
+        width: 20px;
+        height: 20px;
+    }
+}

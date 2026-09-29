@@ -1,0 +1,187 @@
+.solutionsSection {
+    width: 100%;
+    padding: 5rem 1.5rem;
+    background-color: var(--color-white);
+}
+
+.solutionsContainer {
+    max-width: 1400px;
+    /* Slightly wider to give the masonry grid room to breathe */
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.solutionsHeading {
+    font-size: var(--fs-h2);
+    /* Utilizing your design system variable */
+    font-weight: var(--font-weight-regular);
+    color: var(--color-black);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1.1;
+}
+
+/* --- Mobile Grid (1 Column) --- */
+.solutionsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    /* Tight gaps look premium for image grids */
+    grid-auto-rows: 350px;
+    /* Standard height for mobile cards */
+}
+
+/* --- The Card Base --- */
+.solutionCardWrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.solutionCard {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+
+.solutionImage {
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- The Hover State (Overlay & Text) --- */
+.solutionOverlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.65);
+    /* The blackish overlay */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: var(--color-white);
+    opacity: 1;
+    backdrop-filter: blur(0px);
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.solutionTitle {
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-regular);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-align: center;
+    margin: 0;
+    transform: translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.solutionExplore {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: var(--fs-p2);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    transform: translateX(-10px);
+    /* Starts slightly to the left */
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Hover Interactions --- */
+.solutionCard:hover .solutionImage {
+    transform: scale(1.05);
+}
+
+.solutionCard:hover .solutionOverlay {
+    opacity: 1;
+}
+
+.solutionCard:hover .solutionTitle {
+    transform: translateY(0);
+}
+
+.solutionCard:hover .solutionExplore {
+    transform: translateX(0);
+    opacity: 1;
+    /* Adding a slight delay to the arrow makes the animation feel sequenced and high-end */
+    transition-delay: 0.1s;
+}
+
+
+/* --- Desktop Bento Grid (Advanced CSS Pattern) --- */
+@media (min-width: 62em) {
+    .solutionsSection {
+        padding: 5rem 2rem;
+        /* Larger padding for desktop */
+    }
+
+    .solutionsContainer {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .solutionOverlay {
+        opacity: 0;
+    }
+
+    .solutionsHeader {
+        position: sticky;
+        top: 150px;
+        width: 300px;
+        flex-shrink: 0;
+        z-index: 10;
+    }
+
+    .solutionsGrid {
+        flex-grow: 1;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 280px;
+        gap: 1rem;
+    }
+
+    /* 1. Large Square */
+    .solutionCardWrapper:nth-child(6n + 1) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    /* 2. Tall */
+    .solutionCardWrapper:nth-child(6n + 2) {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    /* 3. Tall */
+    .solutionCardWrapper:nth-child(6n + 3) {
+        grid-column: span 1;
+        grid-row: span 2;
+    }
+
+    /* 4. Wide Landscape */
+    .solutionCardWrapper:nth-child(6n + 4) {
+        grid-column: span 3;
+        grid-row: span 1;
+    }
+
+    /* 5. Standard Square */
+    .solutionCardWrapper:nth-child(6n + 5) {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+
+    /* 6. Standard Square */
+    .solutionCardWrapper:nth-child(6n + 6) {
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+}

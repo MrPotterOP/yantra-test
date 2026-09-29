@@ -1,0 +1,186 @@
+.gallerySection {
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 40px 16px;
+}
+
+.galleryContainer {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    /* Dynamic spacing between viewport and the synced strip track */
+}
+
+/* --- Viewport Architecture --- */
+.mainViewportWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    /* Highly functional flexible mobile aspect constraint */
+    background-color: var(--color-dimWhite);
+    overflow: hidden;
+}
+
+.viewportClip {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.activeGalleryImg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* --- Minimal Glassmorphic Controls --- */
+.navArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: none;
+    color: var(--color-white);
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.leftArrow {
+    left: 0;
+}
+
+.rightArrow {
+    right: 0;
+}
+
+.navArrow:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.navArrow:active {
+    scale: 0.95;
+}
+
+/* --- Synced Filmstrip Thumbnail Strip --- */
+.thumbnailTrackWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.thumbnailScrollTrack {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    /* Hide native system scrollbars natively while preserving scroll mechanics */
+    scrollbar-width: none;
+}
+
+.thumbnailScrollTrack::-webkit-scrollbar {
+    display: none;
+}
+
+.thumbnailCard {
+    position: relative;
+    flex: 0 0 140px;
+    /* Constrains fixed modular card layout item width on mobile profiles */
+    aspect-ratio: 4 / 3;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+    overflow: hidden;
+    transition: filter 0.4s var(--time);
+}
+
+.thumbnailImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6) grayscale(20%);
+    /* Editorial raw technical framing feel */
+    transition: filter 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Interactive States */
+.thumbnailCard:hover .thumbnailImg,
+.activeCard .thumbnailImg {
+    filter: brightness(1) grayscale(0%);
+}
+
+/* Premium micro frame track system overlay */
+.activeFrameIndicator {
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--color-black);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* --- Advanced Desktop Structural Scales (> 992px) --- */
+@media (min-width: 62em) {
+    .gallerySection {
+        padding: 80px;
+    }
+
+    .galleryContainer {
+        gap: 24px;
+    }
+
+    .mainViewportWrapper {
+        aspect-ratio: 16 / 9;
+        /* Cinematic proportions on production widescreen nodes */
+    }
+
+    .navArrow {
+        width: 60px;
+        height: 80px;
+        background: transparent;
+        /* Seamless floating controls structure */
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+        opacity: 0.7;
+        transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .navArrow:hover {
+        background: transparent;
+        opacity: 1;
+    }
+
+    .leftArrow:hover {
+        transform: translateY(-50%) translateX(-4px);
+    }
+
+    .rightArrow:hover {
+        transform: translateY(-50%) translateX(4px);
+    }
+
+    .thumbnailScrollTrack {
+        gap: 16px;
+        overflow-x: hidden;
+        /* Becomes a crisp locked multi-grid frame when matching reference counts */
+    }
+
+    .thumbnailCard {
+        flex: 1;
+        /* Fluid distribution mechanics mimicking baseline architectural rows */
+        max-width: calc(25% - 12px);
+    }
+}

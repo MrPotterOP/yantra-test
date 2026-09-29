@@ -1,0 +1,231 @@
+#advantages {
+    width: 100%;
+    position: relative;
+}
+
+.advantagesContainer {
+    position: relative;
+    width: 100%;
+    padding: 4rem 1.5rem;
+    color: var(--color-white);
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.advantagesBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.advantagesBackgroundImage {
+    object-fit: cover;
+    filter: brightness(0.39);
+}
+
+.advantagesOverlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, .75);
+    z-index: -1;
+}
+
+.advantagesHeader {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    max-width: 1200px;
+    width: 100%;
+    margin-inline: auto;
+}
+
+.advantagesHeader p {
+    font-size: 14px;
+    letter-spacing: .1em;
+    font-weight: var(--font-weight-regular);
+    opacity: .9;
+    margin: 0;
+}
+
+.advantagesHeader h1 {
+    font-size: var(--fs-h1);
+    font-weight: var(--font-weight-light);
+    margin: 0;
+    letter-spacing: .02em;
+}
+
+.advantagesList {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.advantagesCard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, .03);
+    border: 1px solid rgba(255, 255, 255, .1);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    overflow: hidden;
+    color: var(--color-white);
+    transition: background-color .8s ease, color .8s ease;
+}
+
+.advantagesCardContent {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.advantagesIconGroup {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.advantagesIconWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.advantagesIconWrapper img {
+    filter: invert(1);
+    transition: filter .8s ease;
+}
+
+.advantagesDivider {
+    width: 1px;
+    height: 30px;
+    background-color: rgba(255, 255, 255, .3);
+    transition: background-color .8s ease;
+}
+
+.advantagesIconGroup h3 {
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-light);
+    margin: 0;
+    letter-spacing: .03em;
+}
+
+.advantagesDescription {
+    margin-top: 1.5rem;
+}
+
+.advantagesDescription p {
+    font-size: var(--fs-p2);
+    color: var(--color-grey);
+    line-height: 1.6;
+    margin: 0;
+    font-weight: var(--font-weight-regular);
+}
+
+.advantagesProgressBar {
+    width: 100%;
+    height: 3px;
+    background-color: rgba(255, 255, 255, .1);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.advantagesProgress {
+    height: 100%;
+    background-color: var(--color-black);
+}
+
+.advantagesCard.advantagesCardActive {
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+.advantagesCard.advantagesCardActive .advantagesIconWrapper img {
+    filter: invert(0);
+}
+
+.advantagesCard.advantagesCardActive .advantagesDivider {
+    background-color: rgba(0, 0, 0, .2);
+}
+
+@media (min-width:62em) {
+
+    .advantagesContainer {
+        padding: 8rem 2rem;
+    }
+
+    .advantagesHeader {
+        margin-bottom: 4rem;
+    }
+
+    .advantagesList {
+        flex-direction: row;
+        height: 300px;
+        gap: 1.5rem;
+    }
+
+    .advantagesCard {
+        flex: 1;
+        justify-content: flex-end;
+    }
+
+    .advantagesCardContent {
+        padding: 1.6rem;
+        height: 100%;
+        justify-content: flex-end;
+    }
+
+    .advantagesIconGroup {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .advantagesDivider {
+        width: 30px;
+        height: 1px;
+        margin: .5rem 0;
+    }
+
+    .advantagesIconGroup h3 {
+        font-size: var(--fs-p1);
+    }
+
+    .advantagesDescription {
+        width: 320px;
+        flex-shrink: 0;
+        margin-top: 1.5rem;
+    }
+
+    .advantagesCard.advantagesCardActive {
+        flex: 2.8;
+    }
+
+    .advantagesCard.advantagesCardActive .advantagesIconGroup {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .advantagesCard.advantagesCardActive .advantagesDivider {
+        width: 1px;
+        height: 30px;
+        margin: 0;
+    }
+
+    .advantagesCard.advantagesCardActive .advantagesIconGroup h3 {
+        font-size: var(--fs-h3);
+    }
+}

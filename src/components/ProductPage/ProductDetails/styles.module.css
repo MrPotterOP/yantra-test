@@ -1,0 +1,437 @@
+/* ==========================================================================
+   PRODUCT DETAIL COMPONENT STYLES
+   ========================================================================== */
+
+.ProdDet_section {
+    margin: 5rem 0 0 0;
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 40px 16px 100px 16px;
+}
+
+.ProdDet_layoutGrid {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* ==========================================================================
+   LEFT HAND SIDE: GALLERY & MEDIA MECHANICS
+   ========================================================================== */
+
+.ProdDet_stickyMediaContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+}
+
+.ProdDet_viewportMaster {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    background-color: var(--color-dimWhite);
+    overflow: hidden;
+    /* STRICT BOX SYSTEM: Removed border-radius */
+    cursor: crosshair;
+}
+
+.ProdDet_activeViewportImg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 24px;
+}
+
+/* The Boxed Zoom Lens Overlay */
+.ProdDet_magnifierLens {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    /* STRICT BOX SYSTEM: No border radius */
+    border: 1px solid var(--color-ltGrey);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    z-index: 10;
+    background-color: var(--color-white);
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+}
+
+/* Hide magnifier entirely on touch devices for safety */
+@media (hover: none) and (pointer: coarse) {
+    .ProdDet_magnifierLens {
+        display: none !important;
+    }
+}
+
+/* Frosted Glass Arrow Buttons - Now Boxed */
+.ProdDet_sliderArrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    z-index: 20;
+    pointer-events: auto;
+
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: var(--color-black);
+
+    opacity: 0;
+    transition: opacity 0.3s ease, background 0.2s ease;
+}
+
+.ProdDet_viewportMaster:hover .ProdDet_sliderArrow {
+    opacity: 1;
+}
+
+.ProdDet_sliderArrow:hover {
+    background: var(--color-white);
+}
+
+.ProdDet_leftArrow {
+    left: 16px;
+}
+
+.ProdDet_rightArrow {
+    right: 16px;
+}
+
+/* Linear Multi-Asset Filmstrip */
+.ProdDet_thumbnailTrack {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.ProdDet_thumbnailTrack::-webkit-scrollbar {
+    display: none;
+}
+
+.ProdDet_thumbCard {
+    flex: 0 0 80px;
+    aspect-ratio: 1 / 1;
+    border: 1px solid var(--color-dimWhite);
+    background: transparent;
+    padding: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.ProdDet_thumbActive {
+    border-color: var(--color-black);
+}
+
+.ProdDet_thumbAsset {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ==========================================================================
+   RIGHT HAND SIDE: TYPOGRAPHY & DATA ENGINE
+   ========================================================================== */
+
+.ProdDet_detailsScrollContainer {
+    width: 100%;
+}
+
+.ProdDet_breadcrumbs {
+    font-size: var(--fs-p3, 14px);
+    color: var(--color-grey);
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+}
+
+.ProdDet_crumbNode {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ProdDet_crumbSep {
+    opacity: 0.5;
+    font-size: 10px;
+}
+
+.ProdDet_mainTitle {
+    font-size: var(--fs-h1);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin: 0 0 8px 0;
+}
+
+.ProdDet_subTitleLine {
+    font-size: var(--fs-p2);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-grey);
+    letter-spacing: 0.08em;
+    margin: 0 0 32px 0;
+}
+
+.ProdDet_narrativeParagraph {
+    font-size: var(--fs-p1);
+    color: var(--color-grey);
+    line-height: 1.6;
+    margin: 0 0 40px 0;
+}
+
+.ProdDet_sectionLabel {
+    font-size: var(--fs-p2);
+    text-transform: uppercase;
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.04em;
+    color: var(--color-grey);
+    margin: 32px 0 16px 0;
+    border-bottom: 1px solid var(--color-dimWhite);
+    padding-bottom: 12px;
+}
+
+.ProdDet_specsSection {
+    margin-bottom: 48px;
+}
+
+.ProdDet_specsTable {
+    display: flex;
+    flex-direction: column;
+}
+
+.ProdDet_specsRow {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--color-dimWhite);
+    gap: 4px;
+}
+
+.ProdDet_specLabel {
+    font-size: var(--fs-p2);
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+}
+
+.ProdDet_specValue {
+    font-size: var(--fs-p2);
+    color: var(--color-grey);
+}
+
+/* ==========================================================================
+   CONFIGURATOR & ACCORDION SYSTEM
+   ========================================================================== */
+
+.ProdDet_configuratorStack {
+    margin-top: 40px;
+}
+
+.ProdDet_accordionItem {
+    border-bottom: 1px solid var(--color-dimWhite);
+}
+
+.ProdDet_accordionTrigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+}
+
+.ProdDet_accordionTitle {
+    font-size: var(--fs-p2);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-black);
+}
+
+.ProdDet_accordionIcon {
+    font-size: var(--fs-p2);
+    color: var(--color-black);
+}
+
+.ProdDet_accordionBodyOverflowClip {
+    overflow: hidden;
+}
+
+.ProdDet_accordionBodyInner {
+    padding: 0 0 28px 8px;
+}
+
+.ProdDet_variantActiveLabelDisplay {
+    display: block;
+    font-size: var(--fs-p2);
+    color: var(--color-grey);
+    margin-bottom: 16px;
+}
+
+.ProdDet_accordionTextContentParagraph {
+    font-size: var(--fs-p2);
+    color: var(--color-grey);
+    line-height: 1.6;
+}
+
+.ProdDet_dynamicOptionGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+/* Variant 1: Color Swatches - Boxed */
+.ProdDet_colorSwatchCapsule {
+    width: 76px;
+    height: 48px;
+    background-color: var(--swatch-bg);
+    border: 1px solid var(--color-dimWhite);
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.ProdDet_swatchActive::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 1px solid var(--color-black);
+}
+
+/* Variant 2: Image/Glazing Cards - Boxed */
+.ProdDet_glazeSelectionCard {
+    flex: 1;
+    min-width: 100px;
+    max-width: 120px;
+    aspect-ratio: 2 / 1;
+    background: transparent;
+    border: 1px solid var(--color-dimWhite);
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.3s ease;
+}
+
+.ProdDet_glazeCardActive {
+    border-color: var(--color-black);
+}
+
+.ProdDet_glazeCardIconViewport img {
+    width: 100%;
+    height: auto;
+}
+
+/* Variant 3: Text Pill Cards - Boxed */
+.ProdDet_textSelectionCard {
+    padding: 12px 24px;
+    background: transparent;
+    border: 1px solid var(--color-dimWhite);
+    color: var(--color-grey);
+    font-size: var(--fs-p2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ProdDet_textCardActive {
+    border-color: var(--color-black);
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+}
+
+/* ==========================================================================
+   CALL TO ACTION
+   ========================================================================== */
+
+.ProdDet_actionCTAButton {
+    width: 100%;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    border: none;
+    padding: 20px 24px;
+    margin-top: 48px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.06em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ProdDet_actionCTAButton:hover {
+    opacity: 0.9;
+    background-color: var(--color-grey);
+}
+
+.ProdDet_ctaArrowSymbol {
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   PREMIUM STICKY DESKTOP MATRIX SYSTEM (> 992px)
+   ========================================================================== */
+
+@media (min-width: 62em) {
+    .ProdDet_section {
+        padding: 80px 80px 120px 80px;
+    }
+
+    .ProdDet_layoutGrid {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 80px;
+    }
+
+    .ProdDet_stickyMediaContainer {
+        width: 48%;
+        position: sticky;
+        top: 120px;
+    }
+
+    .ProdDet_viewportMaster {
+        height: calc(100vh - 240px);
+        min-height: 500px;
+        max-height: 800px;
+    }
+
+    .ProdDet_detailsScrollContainer {
+        flex: 1;
+        padding-left: 20px;
+    }
+
+    .ProdDet_mainTitle {
+        font-size: var(--fs-h2);
+        font-weight: var(--font-weight-medium);
+    }
+
+    .ProdDet_specsRow {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 16px 0;
+    }
+
+    .ProdDet_specLabel {
+        width: 35%;
+    }
+
+    .ProdDet_specValue {
+        flex: 1;
+    }
+}

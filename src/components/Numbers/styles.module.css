@@ -1,0 +1,52 @@
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem 1.5rem;
+    padding: 3rem 1.5rem;
+    background-color: var(--color-white);
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.num {
+    /* On mobile/tablet, let items occupy roughly half the width (2x2 layout) */
+    flex: 1 1 calc(50% - 1.5rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+}
+
+.num h3 {
+    font-size: var(--fs-h2);
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.1;
+    margin: 0;
+}
+
+.num p {
+    font-size: var(--fs-p2);
+    color: var(--color-grey);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Desktop alignment */
+@media (min-width: 62em) {
+    .numbers {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        padding: 3rem 1rem;
+        gap: 4.2rem;
+    }
+
+    .num {
+        flex: 1;
+    }
+}

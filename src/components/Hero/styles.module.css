@@ -1,0 +1,84 @@
+.heroBox {
+    position: relative;
+    width: 100%;
+    height: 94vh;
+}
+
+/* Updated for Video */
+.heroVideoWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: black;
+}
+
+.bgVideo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(.7);
+}
+
+.heroContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 30px;
+    align-items: center;
+    z-index: 1;
+    color: var(--color-white);
+    text-transform: uppercase;
+    padding: 40px 18px 0 22px;
+    margin-top: -155px;
+}
+
+.heroContent h1 {
+    font-weight: var(--font-weight-light);
+}
+
+.heroDescriptionBox {
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    width: 320px;
+    background-color: var(--color-white);
+    padding: 16px;
+}
+
+@media (min-width: 62em) {
+    .heroBox {
+        height: 94vh;
+    }
+
+    .bgVideo {
+        filter: brightness(.58);
+    }
+
+    .heroContent {
+        align-items: flex-start;
+        width: 70%;
+        z-index: 1;
+        margin-top: -40px;
+    }
+
+    .heroDescriptionBox {
+        position: absolute;
+        bottom: -1px;
+        right: 0;
+        width: 480px;
+        background-color: var(--color-white);
+        padding: 20px;
+    }
+}

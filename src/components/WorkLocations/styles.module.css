@@ -1,0 +1,151 @@
+.workLocationsSection {
+    position: relative;
+    width: 100%;
+    padding: 4rem 1.5rem;
+    color: var(--color-white);
+    overflow: hidden;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.workLocationsBgWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.workLocationsBgImage {
+    object-fit: cover;
+    filter: brightness(var(--opacity));
+}
+
+.workLocationsOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+}
+
+.workLocationsContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.workLocationsHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.workLocationsSubhead {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    font-weight: var(--font-weight-regular);
+    opacity: 0.9;
+    margin: 0;
+}
+
+.workLocationsHeading {
+    font-size: var(--fs-h1);
+    font-weight: var(--font-weight-light);
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.workLocationsContentGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    margin-top: 1rem;
+}
+
+.workLocationsColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+}
+
+.workLocationsColumn h3 {
+    font-size: var(--fs-h3);
+    font-weight: var(--font-weight-light);
+    margin: 0;
+    letter-spacing: 0.03em;
+}
+
+.workLocationsList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.workLocationsList li {
+    position: relative;
+    font-size: var(--fs-p2);
+    font-weight: var(--font-weight-regular);
+    padding-left: 1.5rem;
+    opacity: 0.9;
+}
+
+.workLocationsList li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 5px;
+    background-color: var(--color-white);
+    border-radius: 50%;
+}
+
+.workLocationsDividerWrapper {
+    display: none;
+}
+
+@media (min-width: 62em) {
+    .workLocationsSection {
+        padding: 5rem 2rem;
+    }
+
+    .workLocationsContainer {
+        gap: 5rem;
+    }
+
+    .workLocationsContentGrid {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: stretch;
+        padding-left: 1rem;
+    }
+
+    .workLocationsColumn {
+        flex: 1;
+        max-width: 40%;
+    }
+
+    .workLocationsDividerWrapper {
+        display: flex;
+        justify-content: center;
+        width: 2px;
+        margin: 0 2rem;
+    }
+
+    .workLocationsDivider {
+        width: 1px;
+        background-color: var(--color-white);
+    }
+}

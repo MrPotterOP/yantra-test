@@ -1,0 +1,472 @@
+.openRolesSection {
+    background-color: var(--color-white);
+    width: 100%;
+    padding: 6rem 1.5rem;
+    overflow: hidden;
+}
+
+.openRolesContainer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.openRolesHeading {
+    font-size: var(--fs-h1);
+    color: var(--color-black);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+}
+
+.openRolesList {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-black);
+    border-bottom: 1px solid var(--color-black);
+}
+
+.openRolesEmptyState {
+    padding: 4rem 2rem;
+    text-align: center;
+    color: var(--color-grey);
+    font-size: var(--fs-p1);
+}
+
+.openRolesRow {
+    border-bottom: 1px solid var(--color-ltGrey);
+    transition: background-color 0.3s ease;
+}
+
+.openRolesRow:last-child {
+    border-bottom: none;
+}
+
+.openRolesRow:hover {
+    background-color: var(--color-dimWhite);
+}
+
+.openRolesRowActive {
+    background-color: var(--color-dimWhite);
+}
+
+.openRolesHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2.5rem 1rem;
+    cursor: pointer;
+}
+
+.openRolesTitle {
+    font-size: var(--fs-h3);
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    margin: 0;
+}
+
+.openRolesMeta {
+    font-size: var(--fs-p2);
+    color: var(--color-grey);
+    margin: 0;
+}
+
+.openRolesAction {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+}
+
+.openRolesApplyLink {
+    font-size: var(--fs-p2);
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.2s ease;
+    padding: 0.5rem 0;
+}
+
+.openRolesApplyLink:hover {
+    opacity: 0.6;
+}
+
+.openRolesDescriptionWrapper {
+    overflow: hidden;
+}
+
+.openRolesDescriptionInner {
+    padding: 0 1rem 3rem;
+}
+
+.openRolesDescription {
+    font-size: var(--fs-p2);
+    color: var(--color-black);
+    line-height: 1.6;
+    margin: 0;
+    max-width: 65ch;
+}
+
+.openRolesCta {
+    margin-top: 6rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.openRolesCtaHeading {
+    font-size: var(--fs-h3);
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    margin: 0;
+}
+
+.openRolesCtaText {
+    font-size: var(--fs-p1);
+    color: var(--color-black);
+    margin: 0;
+}
+
+.openRolesEmailLink {
+    color: var(--color-black);
+    font-weight: var(--font-weight-bold);
+}
+
+@media (min-width: 62em) {
+    .openRolesSection {
+        padding: 5rem 2rem;
+    }
+
+    .openRolesHeading {
+        margin-bottom: 5rem;
+    }
+
+    .openRolesHeader {
+        display: grid;
+        grid-template-columns: 2.5fr 1fr 1fr auto;
+        align-items: center;
+        padding: 3.5rem 2rem;
+        gap: 2rem;
+    }
+
+    .openRolesAction {
+        margin-top: 0;
+        justify-content: flex-end;
+    }
+
+    .openRolesDescriptionInner {
+        padding: 0 2rem 3.5rem;
+    }
+}
+
+/* ── Skeleton ─────────────────────────────────────────────── */
+.skeletonRow { pointer-events: none; }
+
+@keyframes shimmer {
+    0% { background-position: -600px 0; }
+    100% { background-position: 600px 0; }
+}
+
+.skeletonTitle,
+.skeletonMeta {
+    border-radius: 4px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 600px 100%;
+    animation: shimmer 1.4s infinite;
+}
+
+.skeletonTitle { height: 22px; width: 55%; margin-bottom: 8px; }
+.skeletonMeta  { height: 14px; width: 28%; }
+
+/* ── Inline apply (inside expanded panel) ─────────────────── */
+.openRolesApplyInline {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    font-size: var(--fs-p2);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-black);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: opacity 0.2s;
+}
+
+.openRolesApplyInline:hover { opacity: 0.6; }
+
+/* ── Modal overlay ────────────────────────────────────────── */
+.modalOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.modal {
+    background: #fff;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 580px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.2);
+}
+
+/* ── Modal header ─────────────────────────────────────────── */
+.modalHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.75rem 1.75rem 1.25rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.modalLabel {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #777;
+    margin: 0 0 4px;
+}
+
+.modalTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 4px;
+    line-height: 1.3;
+}
+
+.modalMeta {
+    font-size: 0.8125rem;
+    color: #666;
+    margin: 0;
+}
+
+.modalClose {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+    color: #555;
+    transition: background 0.15s, color 0.15s;
+}
+
+.modalClose:hover { background: #f4f4f4; color: #111; }
+
+/* ── Modal form ───────────────────────────────────────────── */
+.modalForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.75rem;
+}
+
+.formRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 480px) { .formRow { grid-template-columns: 1fr; } }
+
+.fieldStack { display: flex; flex-direction: column; gap: 6px; }
+
+.fieldLabel {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: #1a1a1a;
+}
+
+.fieldRequired { color: #cc2200; margin-left: 2px; }
+.fieldOptional { color: #888; font-weight: 400; }
+
+.fieldInput {
+    padding: 0.625rem 0.875rem;
+    border: 1.5px solid #d4d4d4;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #111;
+    background: #fafafa;
+    outline: none;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.fieldInput:focus {
+    border-color: #111;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+.fieldInputError { border-color: #cc2200; }
+
+.fieldHint {
+    font-size: 0.75rem;
+    color: #888;
+    line-height: 1.5;
+}
+
+.fieldError {
+    font-size: 0.75rem;
+    color: #cc2200;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.textarea {
+    padding: 0.625rem 0.875rem;
+    border: 1.5px solid #d4d4d4;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: #111;
+    background: #fafafa;
+    outline: none;
+    resize: vertical;
+    font-family: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.textarea:focus {
+    border-color: #111;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ── Modal actions ────────────────────────────────────────── */
+.modalActions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    padding-top: 0.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.cancelBtn {
+    padding: 0.6rem 1.25rem;
+    border: 1.5px solid #d4d4d4;
+    border-radius: 8px;
+    background: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s;
+}
+
+.cancelBtn:hover { border-color: #999; color: #111; }
+
+.submitBtn {
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, opacity 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 160px;
+    justify-content: center;
+}
+
+.submitBtn:hover:not(:disabled) { background: #333; }
+.submitBtn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.65s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Success state ────────────────────────────────────────── */
+.modalSuccess {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 3rem 2rem;
+    gap: 1rem;
+}
+
+.successIcon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #f0faf0;
+    border: 1.5px solid #c6e8c6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1a7a1a;
+}
+
+.modalSuccess h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #111;
+    margin: 0;
+}
+
+.modalSuccess p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.6;
+    max-width: 38ch;
+    margin: 0;
+}
+
+.modalDone {
+    margin-top: 0.5rem;
+    padding: 0.6rem 2rem;
+    border: 1.5px solid #111;
+    border-radius: 8px;
+    background: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+}
+
+.modalDone:hover { background: #111; color: #fff; }
+
+/* ── Form error ───────────────────────────────────────────── */
+.formError {
+    font-size: 0.8125rem;
+    color: #cc2200;
+    background: #fff5f5;
+    border: 1px solid #fcc;
+    border-radius: 8px;
+    padding: 0.625rem 0.875rem;
+    margin: 0;
+}

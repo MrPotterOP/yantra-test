@@ -1,0 +1,79 @@
+.specsSection {
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 48px 20px;
+    border-bottom: 1px solid var(--color-dimWhite);
+}
+
+.specsContainer {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* 32px vertical gap between wrapped rows, 16px horizontal gap */
+    gap: 32px 16px;
+}
+
+.specBox {
+    /* Dictates exactly 2 items per row max by taking up 50% minus half the gap */
+    flex: 0 1 calc(50% - 8px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+}
+
+.specLabel {
+    font-size: 12px;
+    color: var(--color-grey);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.specValue {
+    font-size: var(--fs-p2);
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    line-height: 1.4;
+    white-space: pre-line;
+    letter-spacing: -0.01em;
+}
+
+/* --- Premium Desktop Breakpoint (> 992px) --- */
+@media (min-width: 62em) {
+    .specsSection {
+        padding: 100px 80px;
+    }
+
+    .specsContainer {
+        /* Switch to a single flat row without wrapping */
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 0;
+    }
+
+    .specBox {
+        /* Evenly distribute available space across all items */
+        flex: 1;
+        align-items: flex-start;
+        text-align: left;
+        padding-right: 40px;
+        gap: 12px;
+    }
+
+    .specBox:last-child {
+        padding-right: 0;
+    }
+
+    .specLabel {
+        font-size: 14px;
+    }
+
+    .specValue {
+        font-size: var(--fs-p1);
+    }
+}

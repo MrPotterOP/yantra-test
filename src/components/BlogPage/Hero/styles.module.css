@@ -1,0 +1,208 @@
+.heroSection {
+    width: 100%;
+    background-color: var(--color-white);
+    padding: 60px 30px 30px 30px;
+    margin: 80px 0 0 0;
+}
+
+.heroContainer {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Upper Structural Layout Block --- */
+.metaGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-bottom: 24px;
+}
+
+.blogTitle {
+    font-size: var(--fs-h2);
+    color: var(--color-black);
+    font-weight: var(--font-weight-light);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.authorDateBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+}
+
+.metaItem {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.metaLabel {
+    font-size: var(--fs-p3);
+    text-transform: uppercase;
+    color: var(--color-grey);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: 0.06em;
+}
+
+.metaValue {
+    font-size: var(--fs-p3);
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+}
+
+/* --- Nav Tracking / Breadcrumbs --- */
+.breadcrumbs {
+    font-size: var(--fs-p3);
+    color: var(--color-grey);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.01em;
+}
+
+.crumbLink {
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.crumbLink:hover {
+    color: var(--color-black);
+}
+
+.separator {
+    opacity: 0.5;
+    font-size: 10px;
+}
+
+.activeCrumb {
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 220px;
+}
+
+/* --- Banner Display Panel --- */
+.imageViewport {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--color-dimWhite);
+}
+
+.heroImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* --- Premium Desktop Breakpoint (> 992px) --- */
+@media (min-width: 62em) {
+    .heroSection {
+        padding: 120px 80px 40px 80px;
+        margin: 60px 0 0 0;
+    }
+
+    .metaGrid {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 60px;
+        margin-bottom: 32px;
+    }
+
+    .blogTitle {
+        flex: 1;
+        font-size: 4rem;
+        max-width: 65%;
+    }
+
+    .authorDateBlock {
+        flex-direction: column;
+        gap: 28px;
+        min-width: 220px;
+        padding-top: 10px;
+    }
+
+    .activeCrumb {
+        max-width: 100%;
+    }
+
+    .imageViewport {
+        aspect-ratio: 21 / 9;
+    }
+}
+
+/* =========================================
+   Skeleton Loading States
+   ========================================= */
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* Light skeleton matching the white hero background */
+.skeleton {
+    background: linear-gradient(90deg, #e5e5e5 25%, #f2f2f2 50%, #e5e5e5 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: 4px;
+}
+
+/* Structural dimensions for skeleton blocks */
+.skeletonTitle {
+    width: 100%;
+    height: clamp(32px, 5vw, 64px);
+    max-width: 600px;
+}
+
+.skeletonMetaLabel {
+    width: 45px;
+    height: 12px;
+}
+
+.skeletonMetaValue {
+    width: 130px;
+    height: 16px;
+    margin-top: 4px;
+}
+
+.skeletonBreadcrumb {
+    width: clamp(200px, 35vw, 350px);
+    height: 14px;
+    margin: 4px 0;
+}
+
+.skeletonImageBlock {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    /* Matches your edge-to-edge image style */
+}
+
+/* --- Premium Desktop Breakpoint Adjustments for Skeleton --- */
+@media (min-width: 62em) {
+    .skeletonTitle {
+        flex: 1;
+        /* Matches the flex: 1 of .blogTitle */
+        max-width: 65%;
+        height: 64px;
+        /* Approximates 4rem text block */
+    }
+}

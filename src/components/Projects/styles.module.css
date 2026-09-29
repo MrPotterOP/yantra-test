@@ -1,0 +1,139 @@
+.projectsSection {
+    width: 100%;
+    padding: 5rem 0 5rem 1.5rem;
+    overflow: hidden;
+}
+
+.projectsHeader {
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.projectsHeading {
+    font-size: var(--fs-h1);
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* --- Top Navigation --- */
+
+.projectsNav {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.navButton {
+    background: none;
+    border: none;
+    color: var(--color-black);
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.navButton:hover {
+    opacity: 0.5;
+}
+
+.arrowLeft {
+    transform: rotate(180deg);
+}
+
+/* --- Horizontal Scroll Track --- */
+
+.projectsTrack {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+}
+
+.projectsTrack::-webkit-scrollbar {
+    height: 8px;
+    background-color: var(--color-dimWhite);
+    border-radius: 1rem;
+}
+
+.projectsTrack::-webkit-scrollbar-track {
+    margin: 50px 20px;
+}
+
+.projectsTrack::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey);
+    cursor: pointer;
+}
+
+/* --- Desktop --- */
+
+@media (min-width: 62em) {
+    .projectsSection {
+        padding: 6rem 0 6rem 2rem;
+    }
+
+    .projectsTrack {
+        margin-left: 2rem;
+        padding-left: 2rem;
+        padding-bottom: 4rem;
+    }
+}
+
+/* --- Infinite Image Slider --- */
+
+.projectSlider {
+    padding: 5rem 0;
+    overflow: hidden;
+    background-color: var(--color-white);
+    width: 100vw;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: var(--fs-h1);
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 3rem;
+    letter-spacing: 0.02em;
+}
+
+.sliderBox {
+    display: flex;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.sliderBox:hover .slider {
+    animation-play-state: paused;
+}
+
+.slider {
+    display: flex;
+    animation: slide 30s linear infinite;
+}
+
+.slider img {
+    margin-right: 1.5rem;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}

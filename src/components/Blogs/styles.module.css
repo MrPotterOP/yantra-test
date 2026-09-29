@@ -1,0 +1,64 @@
+.blogsSection {
+    padding: 4rem 2rem;
+    overflow: hidden;
+    /* prevents horizontal scrollbar on body */
+    width: 100%;
+}
+
+.blogsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.blogsHeading {
+    font-size: 2rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0;
+    color: var(--color-black);
+}
+
+.blogsNav {
+    display: flex;
+    gap: 1rem;
+}
+
+.navButton {
+    background: none;
+    border: 1px solid var(--color-grey);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navButton:hover {
+    background-color: var(--color-dimWhite);
+}
+
+.arrowLeft {
+    transform: rotate(180deg);
+}
+
+.blogsTrack {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 2rem;
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.blogsTrack::-webkit-scrollbar {
+    display: none;
+}

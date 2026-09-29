@@ -1,0 +1,175 @@
+#about {
+    margin: 80px 0;
+}
+
+.aboutTitle {
+    margin: 0 10px 80px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.aboutTitle p {
+    font-size: var(--fs-p2);
+}
+
+.aboutTitle h1 {
+    font-size: var(--fs-h1);
+    font-weight: var(--fw-light);
+    text-transform: uppercase;
+}
+
+/* --- Improved Numbers Section --- */
+.numbersContainer {
+    /* Mobile-first grid: 2 items per row */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 10px;
+    margin: 0 20px 80px 20px;
+}
+
+.numBlock {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Forces the 3rd item to span the full width of the second row and center itself */
+.numbersContainer .numBlock:nth-child(3) {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
+/* Typography moved to CSS for responsive scaling */
+.numberValue {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Locks the +, ★, and numbers onto the exact same vertical center */
+    margin: 0;
+    font-size: 2.5rem;
+    /* Scaled down for mobile */
+    font-weight: 300;
+    line-height: 1;
+}
+
+.numberTitle {
+    margin: 10px 0 0 0;
+    font-size: 0.9rem;
+    /* Slightly smaller for mobile */
+    font-weight: 500;
+}
+
+/* Ensures the star and plus sign perfectly respect the 1em height of the rolling digits */
+.staticChar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1em;
+}
+
+/* -------------------------------- */
+
+.aboutBox {
+    position: relative;
+    width: 100%;
+    height: 180vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.aboutBox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(.85);
+}
+
+.aboutTextBox {
+    background-color: var(--color-white);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 85%;
+}
+
+.aboutBox .aboutTextBox:last-child {
+    top: unset;
+    bottom: 0;
+    left: 0;
+}
+
+@media (min-width: 62em) {
+    #about {
+        margin: 100px 0;
+    }
+
+    .aboutTitle {
+        margin: 0 10px 80px 300px;
+    }
+
+    /* --- Desktop Layout for Numbers --- */
+    .numbersContainer {
+        display: flex;
+        /* Switch back to flex row for desktop */
+        flex-direction: row;
+        justify-content: center;
+        gap: 100px;
+        margin-bottom: 100px;
+    }
+
+    .numberValue {
+        font-size: 3.5rem;
+        /* Restores the large font size for desktop */
+    }
+
+    .numberTitle {
+        font-size: 1rem;
+    }
+
+    /* ---------------------------------- */
+
+    .aboutBox {
+        flex-direction: row;
+        gap: 10px;
+        height: 84vh;
+    }
+
+    .aboutBox img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .aboutBox img:first-child {
+        width: 50%;
+        height: 100%;
+    }
+
+    .aboutTextBox {
+        background-color: var(--color-white);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 85%;
+    }
+
+    .aboutBox .aboutTextBox:last-child {
+        top: unset;
+        bottom: 0;
+        left: 0;
+    }
+}

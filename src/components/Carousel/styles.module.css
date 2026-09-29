@@ -1,0 +1,106 @@
+.carouselSection {
+    width: 100%;
+    padding: 5rem 0 5rem 1.5rem;
+    overflow: hidden;
+}
+
+.carouselHeader {
+    max-width: 1200px;
+    margin: 0 auto 3rem auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.carouselHeading {
+    font-size: var(--fs-h1);
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+/* --- Top Nav Buttons --- */
+.carouselNav {
+    display: flex;
+    gap: .5rem;
+}
+
+.carouselNavButton {
+    background: none;
+    border: none;
+    color: var(--color-black);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carouselNavButton:hover {
+    opacity: 0.5;
+}
+
+.carouselNavButton:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.carouselArrowLeft {
+    transform: rotate(180deg);
+}
+
+
+/* --- Scroll Track --- */
+.carouselTrack {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 2rem;
+
+    /* Native smooth scrolling and snapping */
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+
+    /* Hide scrollbar for cleaner UI on mobile, optionally keep for desktop */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.carouselTrack::-webkit-scrollbar {
+    height: 8px;
+    background-color: var(--color-dimWhite);
+    border-radius: 1em;
+    display: none;
+    /* Consider keeping hidden for cleaner modern UI */
+}
+
+.carouselTrack::-webkit-scrollbar-track {
+    margin: 50px 20px;
+}
+
+.carouselTrack::-webkit-scrollbar-thumb {
+    background-color: var(--color-grey);
+    cursor: pointer;
+}
+
+/* --- Desktop Adjustments --- */
+@media (min-width: 62em) {
+    .carouselSection {
+        padding: 6rem 0 6rem 2rem;
+    }
+
+    .carouselTrack {
+        /* Align track exactly with the 1200px container bounds on desktop */
+        margin-left: 2rem;
+        padding-left: 2rem;
+        padding-bottom: 4rem;
+        scrollbar-width: auto;
+    }
+
+    .carouselTrack::-webkit-scrollbar {
+        display: block;
+    }
+}

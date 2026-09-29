@@ -1,0 +1,352 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  /*      typography */
+
+  /* .5rem = 8px, 1rem = 16px, 1.5rem = 24px ... */
+
+  /* --fs-h1: 36px; */
+  --fs-h1: 26px;
+  --fs-h2: 34px;
+  --fs-h3: 24px;
+
+  --fs-p1: 18px;
+  --fs-p2: 16px;
+
+
+  --font-alfa: "Inter", sans-serif;
+
+  --color-white: #ffff;
+  --color-black: #000000;
+  --color-dimWhite: #F5F5F5;
+  --color-grey: #555A64;
+  --color-ltGrey: #d5d5d5;
+
+  --font-weight-bold: 700;
+  --font-weight-medium: 500;
+  --font-weight-regular: 400;
+  --font-weight-light: 300;
+
+
+  --time: 20s;
+
+  --opacity: 0.28;
+}
+
+@media (min-width: 62em) {
+  :root {
+    /* --fs-h1: 80px; */
+    --fs-h1: 65px;
+    --fs-h2: 44px;
+    --fs-h3: 30px;
+
+    --fs-p1: 20px;
+    --fs-p2: 16px;
+  }
+}
+
+h1 {
+  font-size: var(--fs-h1);
+}
+
+h2 {
+  font-size: var(--fs-h2);
+}
+
+h3 {
+  font-size: var(--fs-h3);
+}
+
+.p1 {
+  font-size: var(--fs-p1);
+}
+
+.heading {
+  font-size: var(--fs-h1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  font-family: var(--font-alfa);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  /* ============================================================
+     1. TYPOGRAPHY
+     ============================================================ */
+
+  /* Font family — reused from marketing tokens, nothing new defined */
+  --cms-font-sans: var(--font-alfa);
+
+  /* Type scale — tuned for dense admin UI (tables, forms, sidebars),
+     deliberately smaller & tighter than the marketing --fs-* scale.
+     px values, 1px-precise since admin UIs read better on exact
+     pixel grids at these sizes than on rem-scaled fractions. */
+  --cms-fs-2xs: 11px;
+  /* micro labels, timestamps in tables      */
+  --cms-fs-xs: 12px;
+  /* badges, meta text, table sub-lines      */
+  --cms-fs-sm: 13px;
+  /* dense table cell copy                   */
+  --cms-fs-base: 14px;
+  /* default body / form inputs / buttons    */
+  --cms-fs-md: 15px;
+  /* emphasized body, list item titles       */
+  --cms-fs-lg: 16px;
+  /* section labels, modal body               */
+  --cms-fs-xl: 18px;
+  /* card titles                              */
+  --cms-fs-2xl: 20px;
+  /* panel headers                            */
+  --cms-fs-3xl: 24px;
+  /* page sub-heads                           */
+  --cms-fs-4xl: 28px;
+  /* page titles ("Contacts", "Products")     */
+  --cms-fs-5xl: 32px;
+  /* dashboard hero numbers / empty-state H1  */
+
+  --cms-lh-tight: 1.2;
+  --cms-lh-snug: 1.35;
+  --cms-lh-normal: 1.5;
+  --cms-lh-relaxed: 1.65;
+
+  --cms-fw-regular: 400;
+  --cms-fw-medium: 500;
+  --cms-fw-semibold: 600;
+  --cms-fw-bold: 700;
+
+  --cms-tracking-tight: -0.01em;
+  /* large page titles              */
+  --cms-tracking-normal: 0;
+  --cms-tracking-wide: 0.02em;
+  /* all-caps micro labels / eyebrows */
+
+  /* ============================================================
+     2. COLOR — "sunlight through glass"
+     Primary = warm amber/sunbeam (skylight daylight).
+     Sky     = cool blue, used only for links/info, never primary CTAs.
+     Neutral = cool glass/aluminum grey ramp, not warm grey.
+     ============================================================ */
+
+  /* --- Primary (amber/sunbeam) --- */
+  --cms-color-primary-50: #FFF4EC;
+  --cms-color-primary-100: #FFE3D0;
+  --cms-color-primary-200: #FFC49E;
+  --cms-color-primary-300: #FF9F63;
+  --cms-color-primary-400: #FF7A3D;
+  --cms-color-primary-500: #FF5E1A;
+  /* base — primary buttons, active nav rail */
+  --cms-color-primary-600: #E84A0C;
+  /* hover / pressed                          */
+  --cms-color-primary-700: #C13A08;
+  --cms-color-primary-800: #8F2C08;
+  --cms-color-primary-900: #5E1E08;
+
+  /* --- Sky (secondary / info / links) --- */
+  --cms-color-sky-50: #EEF6FF;
+  --cms-color-sky-100: #DCEEFF;
+  --cms-color-sky-300: #8FC2FF;
+  --cms-color-sky-500: #2F86EB;
+  --cms-color-sky-600: #1D6BC7;
+  --cms-color-sky-700: #15529B;
+
+  /* --- Neutral ramp (cool, glass/aluminum — NOT warm grey) --- */
+  --cms-color-neutral-0: #FFFFFF;
+  --cms-color-neutral-25: #FAFAFB;
+  --cms-color-neutral-50: #F5F6F8;
+  --cms-color-neutral-100: #EDEEF1;
+  --cms-color-neutral-200: #E2E4E8;
+  --cms-color-neutral-300: #CDD1D8;
+  --cms-color-neutral-400: #A9AFB9;
+  --cms-color-neutral-500: #7C8391;
+  --cms-color-neutral-600: #5B616D;
+  --cms-color-neutral-700: #40454E;
+  --cms-color-neutral-800: #292C33;
+  --cms-color-neutral-900: #16181C;
+
+  /* --- Semantic status colors (raw palette) --- */
+  --cms-color-success-bg: #E7F7EE;
+  --cms-color-success-fg: #1E9A5A;
+  --cms-color-success-dot: #22B36B;
+
+  --cms-color-warning-bg: #FFF4E0;
+  --cms-color-warning-fg: #B8790C;
+  --cms-color-warning-dot: #F0A020;
+
+  --cms-color-danger-bg: #FDECEC;
+  --cms-color-danger-fg: #D93A3A;
+  --cms-color-danger-dot: #E64545;
+
+  --cms-color-info-bg: var(--cms-color-sky-100);
+  --cms-color-info-fg: var(--cms-color-sky-700);
+  --cms-color-info-dot: var(--cms-color-sky-500);
+
+  --cms-color-neutral-badge-bg: #EEF0F3;
+  --cms-color-neutral-badge-fg: #5B616D;
+  --cms-color-neutral-badge-dot: #9CA2AC;
+
+  /* --- Content-status aliases — map 1:1 to Prisma schema states.
+     Components should ALWAYS read these, never the raw palette above,
+     so a future re-theme only touches this block. --- */
+  --cms-status-published-fg: var(--cms-color-success-fg);
+  --cms-status-published-bg: var(--cms-color-success-bg);
+  --cms-status-draft-fg: var(--cms-color-neutral-badge-fg);
+  --cms-status-draft-bg: var(--cms-color-neutral-badge-bg);
+  --cms-status-featured-fg: var(--cms-color-primary-600);
+  --cms-status-featured-bg: var(--cms-color-primary-50);
+  --cms-status-active-fg: var(--cms-color-success-fg);
+  /* Career.isActive true  */
+  --cms-status-active-bg: var(--cms-color-success-bg);
+  --cms-status-inactive-fg: var(--cms-color-neutral-badge-fg);
+  /* Career.isActive false */
+  --cms-status-inactive-bg: var(--cms-color-neutral-badge-bg);
+  --cms-status-new-fg: var(--cms-color-sky-700);
+  /* CareerApplication.status */
+  --cms-status-new-bg: var(--cms-color-sky-100);
+  --cms-status-reviewed-fg: var(--cms-color-warning-fg);
+  --cms-status-reviewed-bg: var(--cms-color-warning-bg);
+  --cms-status-shortlisted-fg: var(--cms-color-success-fg);
+  --cms-status-shortlisted-bg: var(--cms-color-success-bg);
+  --cms-status-rejected-fg: var(--cms-color-danger-fg);
+  --cms-status-rejected-bg: var(--cms-color-danger-bg);
+
+  /* --- Avatar / author chip palette — cycle by id hash, never assign
+     manually. Used for Admin initials in Blog author column, etc. --- */
+  --cms-avatar-bg-1: #FDE3E3;
+  --cms-avatar-fg-1: #C23B3B;
+  --cms-avatar-bg-2: #DCE8FF;
+  --cms-avatar-fg-2: #2C58B0;
+  --cms-avatar-bg-3: #FFF1CF;
+  --cms-avatar-fg-3: #A87A12;
+  --cms-avatar-bg-4: #DFF5E6;
+  --cms-avatar-fg-4: #1F8F55;
+  --cms-avatar-bg-5: #EBE1FB;
+  --cms-avatar-fg-5: #6A46C4;
+  --cms-avatar-bg-6: #FFE3EF;
+  --cms-avatar-fg-6: #C23B84;
+
+  /* --- Surfaces --- */
+  --cms-surface-app: var(--cms-color-neutral-50);
+  --cms-surface-sidebar: var(--cms-color-neutral-0);
+  --cms-surface-topbar: var(--cms-color-neutral-0);
+  --cms-surface-card: var(--cms-color-neutral-0);
+  --cms-surface-sunken: var(--cms-color-neutral-25);
+  --cms-surface-hover: var(--cms-color-neutral-50);
+  --cms-surface-selected: var(--cms-color-primary-50);
+  --cms-surface-overlay: rgba(22, 24, 28, 0.45);
+
+  /* --- Borders --- */
+  --cms-border-subtle: var(--cms-color-neutral-100);
+  --cms-border-default: var(--cms-color-neutral-200);
+  --cms-border-strong: var(--cms-color-neutral-300);
+  --cms-border-focus: var(--cms-color-primary-500);
+
+  /* --- Text --- */
+  --cms-text-primary: var(--cms-color-neutral-900);
+  --cms-text-secondary: var(--cms-color-neutral-600);
+  --cms-text-tertiary: var(--cms-color-neutral-500);
+  --cms-text-disabled: var(--cms-color-neutral-400);
+  --cms-text-inverse: var(--cms-color-neutral-0);
+  --cms-text-link: var(--cms-color-sky-600);
+
+  /* ============================================================
+     3. SPACING — 4px base grid
+     ============================================================ */
+  --cms-space-0: 0px;
+  --cms-space-1: 2px;
+  --cms-space-2: 4px;
+  --cms-space-3: 8px;
+  --cms-space-4: 12px;
+  --cms-space-5: 16px;
+  --cms-space-6: 20px;
+  --cms-space-7: 24px;
+  --cms-space-8: 32px;
+  --cms-space-9: 40px;
+  --cms-space-10: 48px;
+  --cms-space-11: 64px;
+  --cms-space-12: 80px;
+
+  /* ============================================================
+     4. RADIUS
+     ============================================================ */
+  --cms-radius-xs: 4px;
+  /* inputs, small chips        */
+  --cms-radius-sm: 6px;
+  /* buttons, table row hover    */
+  --cms-radius-md: 8px;
+  /* cards, dropdowns            */
+  --cms-radius-lg: 12px;
+  /* modals, large panels        */
+  --cms-radius-xl: 16px;
+  /* rare — hero/empty-state art */
+  --cms-radius-full: 999px;
+  /* pills, avatars, status dots */
+
+  /* ============================================================
+     5. ELEVATION
+     ============================================================ */
+  --cms-shadow-xs: 0 1px 2px rgba(16, 18, 22, 0.04);
+  --cms-shadow-sm: 0 1px 3px rgba(16, 18, 22, 0.06), 0 1px 2px rgba(16, 18, 22, 0.04);
+  --cms-shadow-md: 0 4px 10px rgba(16, 18, 22, 0.08), 0 2px 4px rgba(16, 18, 22, 0.04);
+  --cms-shadow-lg: 0 12px 24px rgba(16, 18, 22, 0.12), 0 4px 8px rgba(16, 18, 22, 0.06);
+  --cms-shadow-focus-ring: 0 0 0 3px var(--cms-color-primary-100);
+
+  /* ============================================================
+     6. LAYOUT
+     ============================================================ */
+  --cms-sidebar-width: 264px;
+  --cms-sidebar-width-collapsed: 76px;
+  --cms-topbar-height: 64px;
+  --cms-content-max-width: 1440px;
+  --cms-content-padding-x: 32px;
+  --cms-table-row-height: 64px;
+  --cms-table-header-height: 44px;
+
+  /* ============================================================
+     7. MOTION
+     ============================================================ */
+  --cms-duration-fast: 120ms;
+  --cms-duration-base: 180ms;
+  --cms-duration-slow: 260ms;
+  --cms-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --cms-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --cms-ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ============================================================
+     8. Z-INDEX SCALE
+     ============================================================ */
+  --cms-z-dropdown: 100;
+  --cms-z-sticky: 200;
+  --cms-z-sidebar: 300;
+  --cms-z-overlay: 400;
+  --cms-z-modal: 500;
+  --cms-z-toast: 600;
+  --cms-z-tooltip: 700;
+}
+
+/* ============================================================
+   Optional density variant — hook this up to a `data-density`
+   attribute on <html> if you later add a "compact" table mode.
+   Not applied by default; opt-in only.
+   ============================================================ */
+[data-density="compact"] {
+  --cms-table-row-height: 48px;
+  --cms-table-header-height: 36px;
+  --cms-fs-base: 13px;
+  --cms-fs-sm: 12px;
+}
